@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "devStart": "nodemon server.js",
     "test": "mocha"
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "chai": "^5.1.0",
+    "chai-http": "^4.4.0",
     "dotenv": "^16.4.5",
     "mocha": "^10.3.0",
     "nodemon": "^3.1.0"
