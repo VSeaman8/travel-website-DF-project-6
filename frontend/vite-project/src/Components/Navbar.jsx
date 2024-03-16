@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { getLocations } from "../utilityFunctions/SaveLocations.jsx";
-import SearchEngine from "./SearchEngine";
-import "./Navbar.css";
+//import { getLocations } from "../utilityFunctions/SaveLocations.jsx";
+//import SearchEngine from "./SearchEngine";
 
 const Navbar = () => {
   /*const location = useLocation();
@@ -43,6 +42,11 @@ const Navbar = () => {
             <li className="nav-item active">
               <Link className="nav-link" to="/">
                 Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                Log In
               </Link>
             </li>
             {/*
