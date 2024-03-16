@@ -16,8 +16,12 @@ let userCredentials = {
   password: "hogwarts2002",
 };
 
-before(async () => {
+beforeEach(async () => {
   try {
+    // Delete all users
+    await User.deleteMany({});
+
+    // Create a new user
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(userCredentials.password, salt);
 
@@ -26,8 +30,7 @@ before(async () => {
       password: hashedPassword,
     });
 
-    const savedUser = await user.save();
-    console.log(savedUser);
+    await user.save();
   } catch (error) {
     console.error(error);
   }
