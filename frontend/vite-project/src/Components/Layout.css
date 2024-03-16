@@ -1,0 +1,52 @@
+.background {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
+    url("../assets/WalkingOnSands.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #999;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  color: aliceblue;
+}
+
+.footer-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+}
+.navbar-container {
+  padding: 0 40px;
+  color: #d6d6d6;
+}
+
+.navbar-search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-search form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-search .form-group {
+  flex-grow: 1;
+}
+
+@media (max-width: 767px) {
+  .background {
+    min-height: 100%;
+  }
+  .home-container:not(.homepage) .background {
+    background-image: none;
+    background-color: #999; /* Replace with the color you want */
+  }
+}
