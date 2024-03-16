@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
-const LoginPage = () => {
+const RegistrationPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -9,14 +8,17 @@ const LoginPage = () => {
     event.preventDefault();
 
     console.log(
-      `Logging in with username: ${username} and password: ${password}`
+      `Registering with username: ${username} and password: ${password}`
     );
+
+    // Here, you would send a request to your backend to create a new user
+    // This could be done using the fetch API, axios, or another method
   };
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-form">
-        <h1>Login</h1>
+    <div className="registration-container">
+      <form onSubmit={handleSubmit} className="registration-form">
+        <h2>Register</h2>
         <label>
           Username:
           <input
@@ -33,13 +35,10 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <input type="submit" value="Submit" />
-        <Link to="/register" className="register-link">
-          Don't have an account? Register here.
-        </Link>
+        <input type="submit" value="Register" />
       </form>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegistrationPage;
