@@ -73,6 +73,25 @@ describe("User Login", () => {
   });
 });
 
+describe("Password Change", () => {
+  it("should change the user's password", async function () {
+    // Arrange
+    const newPassword = "newpassword";
+
+    // Act
+    const res = await request(app)
+      .post("/api/User/changePassword")
+      .send({ username: userCredentials.username, password: newPassword });
+
+    // Assert
+    res.should.have.status(200);
+    res.body.should.be.a("object");
+    res.body.should.have
+      .property("message")
+      .eql("Password changed successfully");
+  });
+});
+
 after(() => {
   mongoose.connection.close();
 });
