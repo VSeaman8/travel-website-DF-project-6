@@ -1,3 +1,4 @@
+/* Background Component CSS */
 .background {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)),
     url("../assets/WalkingOnSands.jpg");
@@ -13,6 +14,8 @@
   color: aliceblue;
 }
 
+/* Footer Component */
+
 .footer-container {
   position: absolute;
   display: flex;
@@ -21,6 +24,8 @@
   bottom: 0;
   width: 100%;
 }
+
+/* Navbar Component */
 .navbar-container {
   padding: 0 40px;
   color: #d6d6d6;
@@ -41,6 +46,7 @@
   flex-grow: 1;
 }
 
+/* Login Page */
 .login-container {
   display: flex;
   justify-content: center;
@@ -85,12 +91,64 @@
   display: block;
   margin-top: 20px;
 }
+
+/* Registration Page CSS */
+.registration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.glassmorphism {
+  border-top: 2px solid #ffffff75;
+  border-left: 2px solid #ffffff75;
+  box-shadow: 5px 5px 12px #00000035;
+  background: #ffffff25;
+  border-radius: 15px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.registration-form h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.registration-form label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="password"],
+.registration-form input[type="email"] {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.registration-form input[type="submit"] {
+  margin-top: 20px;
+  align-self: center;
+}
+
+/* Response for all Pages and Components */
 @media (max-width: 767px) {
   .background {
     min-height: 100%;
   }
   .home-container:not(.homepage) .background {
     background-image: none;
-    background-color: #999; /* Replace with the color you want */
+    background-color: #999;
   }
 }
