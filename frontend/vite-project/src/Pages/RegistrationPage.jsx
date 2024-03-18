@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { registerUser } from "../UtilityFunctions/InternalApiCall.js";
 
 const RegistrationPage = () => {
   const [username, setUsername] = useState("");
@@ -7,15 +8,26 @@ const RegistrationPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     console.log(
       `Registering with username: ${username}, password: ${password}, email: ${email}, first name: ${firstName}, last name: ${lastName}`
     );
+    const newUser = {
+      username: username,
+      password: password,
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+    };
 
-    // Here, you would send a request to your backend to create a new user
-    // This could be done using the fetch API, axios, or another method
+    try {
+      const data = await registerUser(newUser);
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
