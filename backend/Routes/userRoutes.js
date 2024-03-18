@@ -6,7 +6,6 @@ import User from "../Models/User.js";
 const router = express.Router();
 
 // POST Route for user registration
-
 router.post("/", async (req, res) => {
   try {
     // hash password set up
@@ -17,6 +16,9 @@ router.post("/", async (req, res) => {
     const user = new User({
       username: req.body.username,
       password: hashedPassword,
+      email: req.body.email,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
     });
 
     // Save user to DB

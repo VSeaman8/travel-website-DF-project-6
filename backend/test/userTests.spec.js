@@ -14,6 +14,9 @@ should();
 let userCredentials = {
   username: "ronweasley",
   password: "hogwarts2002",
+  email: "ron@hogwarts.com",
+  firstName: "Ron",
+  lastName: "Weasley",
 };
 
 beforeEach(async () => {
@@ -28,6 +31,9 @@ beforeEach(async () => {
     const user = new User({
       username: userCredentials.username,
       password: hashedPassword,
+      email: userCredentials.email,
+      firstName: userCredentials.firstName,
+      lastName: userCredentials.lastName,
     });
 
     await user.save();
@@ -42,6 +48,9 @@ describe("User Registration", () => {
     const newUser = {
       username: "harrypotter",
       password: "hogwarts2001",
+      email: "harry@hogwarts.com",
+      firstName: "Harry",
+      lastName: "Potter",
     };
 
     // Act
