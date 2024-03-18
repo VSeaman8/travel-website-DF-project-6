@@ -3,9 +3,9 @@ import React, { useState } from "react";
 const RegistrationPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState(""); // Add this line
-  const [firstName, setFirstName] = useState(""); // Add this line
-  const [lastName, setLastName] = useState(""); // Add this line
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
