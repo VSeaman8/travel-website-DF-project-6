@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="home-container homepage">
       <h1>Tell Me About...</h1>
-      {/*<SearchEngine />*/}
+      {<SearchEngine />}
     </div>
   );
 };
