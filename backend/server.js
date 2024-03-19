@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 
 import userRoutes from "./Routes/userRoutes.js";
 
@@ -8,6 +9,7 @@ dotenv.config();
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 mongoose
@@ -17,4 +19,10 @@ mongoose
 
 app.use("/api/User", userRoutes);
 
-export default app;
+const server = app.listen(process.env.PORT, () =>
+  console.log(
+    `Server is running on: ${server.address().address}:${server.address().port}`
+  )
+);
+
+export default server;
