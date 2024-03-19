@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FetchAndNavigate from "../UtilityFunctions/FetchAndNavigate.jsx";
+import FetchApiData from "../UtilityFunctions/FetchApiData.jsx";
 import "./SearchEngine.css";
 
 const SearchEngine = ({ inNavbar }) => {
@@ -39,7 +39,7 @@ const SearchEngine = ({ inNavbar }) => {
           </button>
         </form>
       </div>
-      {submit && <FetchAndNavigate location={search} />}
+      {submit && <FetchApiData location={search} />}
     </>
   );
 };

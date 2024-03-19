@@ -1,4 +1,4 @@
-/*import SearchEngine from "./components/SearchEngine";*/
+import SearchEngine from "./components/SearchEngine";
 import "./HomePage.css";
 
 const Home = () => {
