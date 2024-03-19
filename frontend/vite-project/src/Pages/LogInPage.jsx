@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { loginUser } from "../UtilityFunctions/InternalApiCall";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const user = {
+      username: username,
+      password: password,
+    };
     console.log(
       `Logging in with username: ${username} and password: ${password}`
     );
+
+    try {
+      const data = await loginUser(user);
+      console.log(data);
+      console.log("User Logged in successfully");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -33,7 +46,7 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className="loginBtn" />
         <Link to="/register" className="register-link">
           Don't have an account? Register here.
         </Link>

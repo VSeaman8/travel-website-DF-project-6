@@ -92,6 +92,34 @@
   margin-top: 20px;
 }
 
+.loginBtn,
+.registerBtn {
+  margin: 20px 20px 20px 45px;
+  height: 30px;
+  width: 150px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444,
+    inset -5px -5px 10px #222;
+  cursor: pointer;
+  border: none;
+  font-size: 12px;
+  color: white;
+  background-color: rgb(128, 128, 128);
+  transition: 500ms;
+  display: flex;
+  white-space: nowrap;
+}
+
+.loginBtn:hover,
+.registerBtn:hover {
+  box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222,
+    inset -5px -5px 10px #444;
+  color: #d6d6d6;
+  transition: 500ms;
+}
+
 /* Registration Page CSS */
 .registration-container {
   display: flex;

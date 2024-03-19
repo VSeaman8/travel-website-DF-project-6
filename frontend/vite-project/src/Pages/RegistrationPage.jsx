@@ -25,6 +25,13 @@ const RegistrationPage = () => {
     try {
       const data = await registerUser(newUser);
       console.log(data);
+
+      // Clear the Form
+      setUsername("");
+      setPassword("");
+      setEmail("");
+      setFirstName("");
+      setLastName("");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -79,7 +86,7 @@ const RegistrationPage = () => {
             className="registration-input-password"
           />
         </label>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" className="registerBtn" />
       </form>
     </div>
   );
