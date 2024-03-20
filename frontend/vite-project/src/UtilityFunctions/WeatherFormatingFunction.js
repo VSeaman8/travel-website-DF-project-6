@@ -23,3 +23,4 @@ const weatherFormatingFunction = (data) => {
     },
   }));
 };
+export default weatherFormatingFunction;

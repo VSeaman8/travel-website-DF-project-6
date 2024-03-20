@@ -40,3 +40,4 @@ const getDayIndices = (data) => {
 
   return dayIndices;
 };
+export default processWeatherData;

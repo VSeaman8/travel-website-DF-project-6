@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FetchApiData from "../UtilityFunctions/FetchApiData.jsx";
-import "./SearchEngine.css";
+import "./searchEngine.css";
 
 const SearchEngine = ({ inNavbar }) => {
   const [search, setSearch] = useState("");

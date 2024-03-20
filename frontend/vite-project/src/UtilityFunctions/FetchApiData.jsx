@@ -115,10 +115,14 @@ export default FetchAndNavigate;*/
 export default useFetchWeatherData;*/
 
 import axios from "axios";
-import { weatherFormatingFunction } from "./WeatherFormatingFunction";
-import { processWeatherData } from "./ProcessWeatherData";
+import weatherFormatingFunction from "./WeatherFormatingFunction";
+import processWeatherData from "./ProcessWeatherData";
 
 const FetchApiData = async (location) => {
+  if (!location) {
+    console.error("No location provided");
+    return;
+  }
   try {
     const response = await axios.get(
       `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=82eead94890f3e9d0203a62caa188ff4`
