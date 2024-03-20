@@ -114,4 +114,27 @@ export default FetchAndNavigate;*/
 
 export default useFetchWeatherData;*/
 
-const FetchApiData = ({ location }) => {};
+import axios from "axios";
+import { weatherFormatingFunction } from "./WeatherFormatingFunction";
+import { processWeatherData } from "./ProcessWeatherData";
+
+const FetchApiData = async (location) => {
+  try {
+    const response = await axios.get(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=82eead94890f3e9d0203a62caa188ff4`
+    );
+    console.log(response.data);
+    // Format Weather data
+    const formattedData = weatherFormatingFunction(response.data.list);
+
+    // Process Weather Data
+    const { currentData, forecastData } = processWeatherData(formattedData);
+
+    // Return of the Processed data
+    return { currentData, forecastData };
+  } catch (error) {
+    console.error(`There was a problem with the fetch operation`, error);
+  }
+};
+
+export default FetchApiData;
