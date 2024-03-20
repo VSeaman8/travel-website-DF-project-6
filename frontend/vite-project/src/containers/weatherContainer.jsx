@@ -1,5 +1,5 @@
-import WeatherCurrentDay from "../components/WeatherCurrentDay.jsx";
-import WeatherForecast from "../components/WeatherForecast.jsx";
+import WeatherCurrentDay from "../Components/WeatherCurrentDay";
+import WeatherForecast from "../Components/WeatherForecast";
 
 const WeatherContainer = ({ locationName, weatherData }) => {
   return (
