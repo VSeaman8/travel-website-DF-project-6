@@ -1,16 +1,15 @@
 import { useLocation, useParams } from "react-router-dom";
 
-import WeatherCurrentDay from "../components/WeatherCurrentDay.jsx";
+import WeatherContainer from "../containers/weatherContainer.jsx";
 import WeatherFavouriteBtn from "../components/WeatherFavouriteBtn.jsx";
-import WeatherForecast from "../components/WeatherForecast.jsx";
 
 import "./Weather.css";
 
-const Weather = () => {
+const LocationPage = () => {
   const locationState = useLocation().state;
   const { location } = useParams();
   const locationName = locationState ? locationState.location : location;
-  const weatherData = useFetchWeatherData(locationName);
+  const weatherData = locationState ? locationState.weatherData : null;
 
   if (!locationState && !location) {
     return (
@@ -21,16 +20,15 @@ const Weather = () => {
   }
 
   return (
-    <div className="weather-container weather-page">
+    <div className="locationPage-container weather-container weather-page">
       <h2>Telling you about ...</h2>
-      <h1 className="weather-title">
+      <h1 className="location-title weather-title">
         {locationName.charAt(0).toUpperCase() + locationName.slice(1)}
       </h1>
       <WeatherFavouriteBtn location={locationName} />
-      <WeatherCurrentDay location={locationName} weatherData={weatherData} />
-      <WeatherForecast location={locationName} weatherData={weatherData} />
+      <WeatherContainer location={locationName} weatherData={weatherData} />
     </div>
   );
 };
 
-export default Weather;
+export default LocationPage;
