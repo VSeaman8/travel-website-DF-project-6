@@ -23,7 +23,7 @@ const LocationFavouriteBtn = ({ location }) => {
   };*/
 
   return (
-    <button className="weather-btn" onClick={handleButtonClick}>
+    <button className="locationfavourite-btn" onClick={handleButtonClick}>
       {isFavourite ? "Remove from Favourites" : "Add to Favourites"}
     </button>
   );

@@ -1,7 +1,7 @@
 import { useLocation, useParams } from "react-router-dom";
 
 import WeatherContainer from "../containers/weatherContainer.jsx";
-import WeatherFavouriteBtn from "../components/WeatherFavouriteBtn.jsx";
+import LocationFavouriteBtn from "../Components/LocationFavouriteBtn.jsx";
 
 import "./Weather.css";
 
@@ -25,7 +25,7 @@ const LocationPage = () => {
       <h1 className="location-title weather-title">
         {locationName.charAt(0).toUpperCase() + locationName.slice(1)}
       </h1>
-      <WeatherFavouriteBtn location={locationName} />
+      <LocationFavouriteBtn location={locationName} />
       <WeatherContainer location={locationName} weatherData={weatherData} />
     </div>
   );

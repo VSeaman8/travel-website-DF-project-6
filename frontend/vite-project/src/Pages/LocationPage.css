@@ -14,7 +14,7 @@
   margin: 30px;
   padding: 0;
 }
-.weather-container {
+.locationPage-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -40,10 +40,10 @@
   width: 100px;
 }
 
-.weather-title {
+.location-title {
   font-size: 50px;
 }
-.weather-btn {
+.locationfavourite-btn {
   margin: 20px 20px 20px 45px;
   height: 30px;
   width: 150px;
@@ -62,7 +62,7 @@
   white-space: nowrap;
 }
 
-.weather-btn:hover {
+.locationfavourite-btn:hover {
   box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222,
     inset -5px -5px 10px #444;
   color: #d6d6d6;
