@@ -7,7 +7,8 @@ const FetchApiData = async (location) => {
   }
   try {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=82eead94890f3e9d0203a62caa188ff4`
+      `http://localhost:5000/api/weather/${location}`
+      //`http://localhost:${process.env.PORT}/api/weather/${location}`
     );
     console.log(response.data);
     return response.data;
