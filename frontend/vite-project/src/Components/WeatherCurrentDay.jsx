@@ -1,6 +1,4 @@
-const WeatherCurrentDay = ({ weatherData }) => {
-  const { currentDayData } = weatherData;
-
+const WeatherCurrentDay = ({ currentDayData }) => {
   if (!currentDayData) {
     return <div>Loading...</div>;
   }

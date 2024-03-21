@@ -1,5 +1,5 @@
 import FavouriteLocationsPlaces from "../Components/FavouriteLocationsPlaces.jsx";
-import "./FavouriteLocations.css";
+import "./FavouriteLocationsPage.css";
 
 const FavouriteLocations = () => {
   return (

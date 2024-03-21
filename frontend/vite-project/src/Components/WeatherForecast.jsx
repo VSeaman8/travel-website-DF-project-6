@@ -1,8 +1,7 @@
 import WeatherForecastDay from "./WeatherForecastDay.jsx";
 
-const WeatherForecast = ({ weatherData }) => {
-  console.log(weatherData);
-  const { forecastData } = weatherData;
+const WeatherForecast = ({ forecastData }) => {
+  console.log(forecastData);
 
   if (!forecastData) {
     return <div>Loading...</div>;
