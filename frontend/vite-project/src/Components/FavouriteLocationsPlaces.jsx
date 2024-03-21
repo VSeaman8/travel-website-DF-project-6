@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
 
-import { getLocations } from "../utilityFunctions/SaveLocations.jsx";
 import Place from "./FavouriteLocationsPlaces";
 
-const FavouriteLocationsPlaces = () => {
-  const locations = getLocations();
-
+const FavouriteLocationsPlaces = ({
+  favourite,
+  onAddFavourite,
+  onRemoveFavourite,
+}) => {
   return (
     <div className="location-container">
-      {locations.map((location, index) => (
+      {favourite.map((location, index) => (
         <Link key={index} to={`/Weather/${location}`}>
-          <Place location={location} />
+          <Place
+            location={location}
+            onAddFavourite={onAddFavourite}
+            onRemoveFavourite={onRemoveFavourite}
+          />
         </Link>
       ))}
     </div>
