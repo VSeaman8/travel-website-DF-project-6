@@ -1,6 +1,11 @@
 import { formatDate, kelvinToCelsius } from "./WeatherFormatingFunction";
 
 const processWeatherData = (result) => {
+  if (!result.list || result.list.length === 0) {
+    console.error("No weather data available");
+    return;
+  }
+
   const currentData = {
     day: formatDate(result.list[0].dt_txt),
     temperature: kelvinToCelsius(result.list[0].main.temp),

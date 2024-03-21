@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 
 //import { getLocations } from "../utilityFunctions/SaveLocations.jsx";
 
-const LocationFavouriteBtn = ({ location }) => {
-  /* const [isFavourite, setIsFavourite] = useState(false);
+/*const LocationFavouriteBtn = ({ location }) => {
+   const [isFavourite, setIsFavourite] = useState(false);
 
   useEffect(() => {
     const favourites = getLocations();
@@ -20,13 +20,16 @@ const LocationFavouriteBtn = ({ location }) => {
     }
     localStorage.setItem("favourites", JSON.stringify(favourites));
     setIsFavourite(!isFavourite);
-  };*/
+  };
 
   return (
     <button className="locationfavourite-btn" onClick={handleButtonClick}>
       {isFavourite ? "Remove from Favourites" : "Add to Favourites"}
     </button>
   );
+};*/
+const LocationFavouriteBtn = () => {
+  return <button className="locationfavourite-btn">Add to Favourites</button>;
 };
 
 export default LocationFavouriteBtn;
