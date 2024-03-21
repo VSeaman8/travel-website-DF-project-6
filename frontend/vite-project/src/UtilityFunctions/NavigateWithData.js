@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FetchApiData from "./FetchApiData";
 
+import processWeatherData from "./ProcessWeatherData";
+
 const NavigateWithData = ({ location }) => {
   const [weatherData, setWeatherData] = useState(null);
   const navigate = useNavigate();
@@ -9,16 +11,17 @@ const NavigateWithData = ({ location }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await FetchApiData(location);
-      setWeatherData(result);
+      const processedResult = processWeatherData(result);
+      setWeatherData(processedResult);
     };
     fetchData();
   }, [location]);
 
   useEffect(() => {
     if (weatherData) {
-      navigate("/LocationPage", { state: { weatherData } });
+      navigate(`/location/${location}`, { state: { weatherData } });
     }
-  }, [weatherData, navigate]);
+  }, [weatherData, navigate, location]);
 
   return null;
 };

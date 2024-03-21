@@ -1,17 +1,19 @@
-const processWeatherData = (data) => {
+import { formatDate, kelvinToCelsius } from "./WeatherFormatingFunction";
+
+const processWeatherData = (result) => {
   const currentData = {
-    day: data[0].dt_txt,
-    temperature: data[0].main.temp,
-    weather: data[0].weather[0].description,
-    icon: data[0].weather[0].icon,
+    day: formatDate(result.list[0].dt_txt),
+    temperature: kelvinToCelsius(result.list[0].main.temp),
+    weather: result.list[0].weather[0].description,
+    icon: result.list[0].weather[0].icon,
   };
 
-  const dayIndices = getDayIndices(data);
+  const dayIndices = getDayIndices(result);
   const forecastData = dayIndices.slice(1).map((index) => {
-    const item = data.list[index];
+    const item = result.list[index];
     return {
-      day: item.dt_txt,
-      temperature: item.main.temp,
+      day: formatDate(item.dt_txt),
+      temperature: kelvinToCelsius(item.main.temp),
       weather: item.weather[0].description,
       icon: item.weather[0].icon,
     };
@@ -20,13 +22,13 @@ const processWeatherData = (data) => {
   return { currentData, forecastData };
 };
 
-const getDayIndices = (data) => {
+const getDayIndices = (result) => {
   let dayIndices = [0];
-  let currentDay = data.list[0].dt_txt.slice(8, 10);
+  let currentDay = result.list[0].dt_txt.slice(8, 10);
 
-  for (let i = 1; i < data.list.length; i++) {
-    let day = data.list[i].dt_txt.slice(8, 10);
-    let hour = data.list[i].dt_txt.slice(11, 13);
+  for (let i = 1; i < result.list.length; i++) {
+    let day = result.list[i].dt_txt.slice(8, 10);
+    let hour = result.list[i].dt_txt.slice(11, 13);
 
     if (day !== currentDay && hour === "15") {
       dayIndices.push(i);

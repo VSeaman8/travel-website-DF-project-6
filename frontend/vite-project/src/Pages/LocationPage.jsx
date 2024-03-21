@@ -3,15 +3,13 @@ import { useLocation, useParams } from "react-router-dom";
 import WeatherContainer from "../containers/weatherContainer.jsx";
 import LocationFavouriteBtn from "../Components/LocationFavouriteBtn.jsx";
 
-import "./Weather.css";
+import "./LocationPage.css";
 
 const LocationPage = () => {
-  const locationState = useLocation().state;
+  const { weatherData } = useLocation().state || {};
   const { location } = useParams();
-  const locationName = locationState ? locationState.location : location;
-  const weatherData = locationState ? locationState.weatherData : null;
 
-  if (!locationState && !location) {
+  if (!weatherData && !location) {
     return (
       <h1 className="not-searched">
         You haven't searched yet. Please search for a location
@@ -23,10 +21,10 @@ const LocationPage = () => {
     <div className="locationPage-container weather-container weather-page">
       <h2>Telling you about ...</h2>
       <h1 className="location-title weather-title">
-        {locationName.charAt(0).toUpperCase() + locationName.slice(1)}
+        {location.charAt(0).toUpperCase() + location.slice(1)}
       </h1>
-      <LocationFavouriteBtn location={locationName} />
-      <WeatherContainer location={locationName} weatherData={weatherData} />
+      <LocationFavouriteBtn location={location} />
+      <WeatherContainer weatherData={weatherData} />
     </div>
   );
 };

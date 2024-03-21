@@ -1,11 +1,11 @@
 import WeatherCurrentDay from "../Components/WeatherCurrentDay";
 import WeatherForecast from "../Components/WeatherForecast";
 
-const WeatherContainer = ({ locationName, weatherData }) => {
+const WeatherContainer = ({ weatherData }) => {
   return (
     <div>
-      <WeatherCurrentDay location={locationName} weatherData={weatherData} />
-      <WeatherForecast location={locationName} weatherData={weatherData} />
+      <WeatherCurrentDay weatherData={weatherData} />
+      <WeatherForecast weatherData={weatherData} />
     </div>
   );
 };
