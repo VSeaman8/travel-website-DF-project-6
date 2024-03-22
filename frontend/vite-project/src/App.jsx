@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import {
   getLocations,
   addLocation,
   removeLocation,
 } from "./UtilityFunctions/FavouriteLocationsArrayUtility.js";
+//import FavouriteContext from "./UtilityFunctions/FavouriteContext.js";
 import FavouriteLocationsPage from "./Pages/FavouriteLocationsPage.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import LocationPage from "./Pages/LocationPage.jsx";
@@ -37,7 +38,11 @@ const App = () => {
 
   return (
     <div>
-      <Layout>
+      <Layout
+        favourite={favourite}
+        selectedLocation={location}
+        setSelectedLocation={setLocation}
+      >
         <Routes>
           <Route
             exact
@@ -57,9 +62,10 @@ const App = () => {
             }
           />
           <Route
-            path="favouritelocations"
+            path="/favouritelocations"
             element={
               <FavouriteLocationsPage
+                setSelectLocation={setLocation}
                 favourite={favourite}
                 onAddFavourite={handleAddFavourite}
                 onRemoveFavourite={handleRemoveFavourite}

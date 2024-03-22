@@ -3,10 +3,20 @@ import Navbar from "./Navbar.jsx";
 
 import "./Layout.css";
 
-const Layout = ({ children }) => {
+const Layout = ({
+  children,
+  favourite,
+  selectedLocation,
+  setSelectedLocation,
+}) => {
   return (
     <div className="layout-Div">
-      <Navbar className="NavBar-layout" />
+      <Navbar
+        className="NavBar-layout"
+        favourite={favourite}
+        selectedLocation={selectedLocation}
+        setSelectedLocation={setSelectedLocation}
+      />
       <Background className="Background-layout">
         {children}
         {/* Content */}

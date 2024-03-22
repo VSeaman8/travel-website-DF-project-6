@@ -1,26 +1,14 @@
-//import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-//import { getLocations } from "../utilityFunctions/SaveLocations.jsx";
-//import SearchEngine from "./SearchEngine";
+import NavigateWithData from "../UtilityFunctions/NavigateWithData";
+import SearchEngine from "./searchEngine";
 
-const Navbar = () => {
-  /*const location = useLocation();
-  const [favouriteLocations, setFavouriteLocations] = useState([]);
+const Navbar = ({ favourite, selectedLocation, setSelectedLocation }) => {
+  const location = useLocation();
 
-  useEffect(() => {
-    const updateFavourites = () => {
-      const location = getLocations();
-      setFavouriteLocations(location);
-      console.log(location);
-    };
-
-    window.addEventListener("storage", updateFavourites);
-    updateFavourites();
-
-    return () => {
-      window.removeEventListener("storage", updateFavourites);
-    };
-  }, [getLocations]);*/
+  const handleLocationClick = (chosenLocation) => {
+    setSelectedLocation(chosenLocation);
+  };
 
   return (
     <div className="navbar-container">
@@ -49,8 +37,7 @@ const Navbar = () => {
                 Log In
               </Link>
             </li>
-            {/*
-            {favouriteLocations && favouriteLocations.length > 0 && (
+            {favourite && favourite.length > 0 && (
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
@@ -65,27 +52,28 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  {favouriteLocations.map((location, index) => (
+                  {favourite.map((chosenLocation, index) => (
                     <Link
                       key={index}
+                      onClick={() => handleLocationClick(chosenLocation)}
                       className="dropdown-item"
-                      to={`/Weather/${location}`}
+                      to={`/location/${chosenLocation}`}
                     >
-                      {location}
+                      {chosenLocation}
                     </Link>
                   ))}
                   <div className="dropdown-divider"></div>
-                  <Link className="dropdown-item" to="/FavouriteLocations">
+                  <Link className="dropdown-item" to="/favouritelocations">
                     All Saved Locations
                   </Link>
                 </div>
               </li>
-                  )}
-                  */}
+            )}
           </ul>
-          {/*  {location.pathname !== "/" && <SearchEngine inNavbar />}*/}
+          {location.pathname !== "/" && <SearchEngine inNavbar />}
         </div>
       </nav>
+      {selectedLocation && <NavigateWithData location={selectedLocation} />}
     </div>
   );
 };
