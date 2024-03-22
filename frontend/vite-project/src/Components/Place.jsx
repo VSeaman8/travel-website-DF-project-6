@@ -1,7 +1,7 @@
 import LocationFavouriteBtn from "./LocationFavouriteBtn.jsx";
 import "./Place.css";
 
-const Place = ({ location }) => {
+const Place = ({ location, favourite, onAddFavourite, onRemoveFavourite }) => {
   return (
     <div className="place-container favourite-page">
       <LocationFavouriteBtn

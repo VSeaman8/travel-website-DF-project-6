@@ -1,11 +1,10 @@
 import FavouriteLocationsPlaces from "../Components/FavouriteLocationsPlaces.jsx";
 import "./FavouriteLocationsPage.css";
 
-const FavouriteLocations = ({
+const FavouriteLocationsPage = ({
   favourite,
-  onHandleFavourite,
-  handleAddFavourite,
-  handleRemoveFavourite,
+  onAddFavourite,
+  onRemoveFavourite,
 }) => {
   return (
     <div className="favouriteLocation-container">
@@ -14,11 +13,11 @@ const FavouriteLocations = ({
       <h4 className="click-name">Click name to view info</h4>
       <FavouriteLocationsPlaces
         favourite={favourite}
-        onAddFavourite={handleAddFavourite}
-        onRemoveFavourite={handleRemoveFavourite}
+        onAddFavourite={onAddFavourite}
+        onRemoveFavourite={onRemoveFavourite}
       />
     </div>
   );
 };
 
-export default FavouriteLocations;
+export default FavouriteLocationsPage;

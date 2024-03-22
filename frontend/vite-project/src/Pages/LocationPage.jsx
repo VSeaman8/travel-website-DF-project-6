@@ -5,7 +5,7 @@ import LocationFavouriteBtn from "../Components/LocationFavouriteBtn.jsx";
 
 import "./LocationPage.css";
 
-const LocationPage = () => {
+const LocationPage = ({ favourite, onAddFavourite, onRemoveFavourite }) => {
   const { weatherData } = useLocation().state || {};
   const { location } = useParams();
 
@@ -23,7 +23,12 @@ const LocationPage = () => {
       <h1 className="location-title weather-title">
         {location.charAt(0).toUpperCase() + location.slice(1)}
       </h1>
-      <LocationFavouriteBtn location={location} />
+      <LocationFavouriteBtn
+        location={location}
+        favourite={favourite}
+        onAddFavourite={onAddFavourite}
+        onRemoveFavourite={onRemoveFavourite}
+      />
       <WeatherContainer weatherData={weatherData} />
     </div>
   );

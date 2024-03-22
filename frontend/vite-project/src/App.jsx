@@ -5,6 +5,7 @@ import {
   addLocation,
   removeLocation,
 } from "./UtilityFunctions/FavouriteLocationsArrayUtility.js";
+import FavouriteLocationsPage from "./Pages/FavouriteLocationsPage.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import LocationPage from "./Pages/LocationPage.jsx";
 import LogInPage from "./Pages/LogInPage.jsx";
@@ -16,16 +17,22 @@ import "./App.css";
 
 const App = () => {
   const [location, setLocation] = useState("");
-  const [favourite, setFavourite] = useState(getLocations);
+  const [favourite, setFavourite] = useState(getLocations());
 
   const handleAddFavourite = (location) => {
     addLocation(location);
-    setFavourite(getLocations());
+    const updatedFavourites = getLocations();
+    setFavourite(updatedFavourites);
+    console.log("Added to favourites:", location);
+    console.log("Updated favourites:", updatedFavourites);
   };
 
   const handleRemoveFavourite = (location) => {
     removeLocation(location);
-    setFavourite(getLocations());
+    const updatedFavourites = getLocations();
+    setFavourite(updatedFavourites);
+    console.log("Removed from favourites:", location);
+    console.log("Updated favourites:", updatedFavourites);
   };
 
   return (
@@ -39,11 +46,20 @@ const App = () => {
           />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/location/:location" element={<LocationPage />} />
+          <Route
+            path="/location/:location"
+            element={
+              <LocationPage
+                favourite={favourite}
+                onAddFavourite={handleAddFavourite}
+                onRemoveFavourite={handleRemoveFavourite}
+              />
+            }
+          />
           <Route
             path="favouritelocations"
             element={
-              <LocationPage
+              <FavouriteLocationsPage
                 favourite={favourite}
                 onAddFavourite={handleAddFavourite}
                 onRemoveFavourite={handleRemoveFavourite}
