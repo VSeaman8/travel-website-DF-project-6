@@ -2,6 +2,7 @@ import express from "express";
 import {
   getFavouriteLocations,
   addFavouriteLocation,
+  deleteFavouriteLocation,
 } from "../controllers/locationController.js";
 import authenticate from "../Middlewares/authMiddleware.js";
 
@@ -13,5 +14,8 @@ router.get("/", authenticate, getFavouriteLocations);
 
 // ADD Route for favourite Location
 router.post("/", authenticate, addFavouriteLocation);
+
+// REMOVE Route for Location favourite
+router.delete("/", authenticate, deleteFavouriteLocation);
 
 export default router;

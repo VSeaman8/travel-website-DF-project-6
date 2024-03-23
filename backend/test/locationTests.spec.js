@@ -87,6 +87,32 @@ describe("POST /favouriteLocations", () => {
     );
   });
 });
+describe("DELETE /favouriteLocations", () => {
+  it("Removes a location from user's favourite list", async () => {
+    // Arrange
+    const user = await User.findOne({ username: userCredentials.username });
+    user.favouriteLocations.push("Mordor", "Rivendell", "Shire", "Greyhavens");
+    await user.save();
+    const oldFavouriteLocations = user.favouriteLocations;
+    const locationToRemove = oldFavouriteLocations[2];
+
+    // Act
+    const res = await request(app)
+      .delete("/api/favouriteLocations")
+      .set("username", userCredentials.username)
+      .send({ location: locationToRemove });
+
+    // Assert
+    res.should.have.status(200);
+    const updatedUser = await User.findOne({
+      username: userCredentials.username,
+    });
+    updatedUser.favouriteLocations.should.not.include(locationToRemove);
+    updatedUser.favouriteLocations.length.should.be.eql(
+      oldFavouriteLocations.length - 1
+    );
+  });
+});
 
 after(() => {
   mongoose.connection.close();
