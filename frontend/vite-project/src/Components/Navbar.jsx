@@ -70,7 +70,9 @@ const Navbar = ({ favourite, selectedLocation, setSelectedLocation }) => {
               </li>
             )}
           </ul>
-          {location.pathname !== "/" && <SearchEngine inNavbar />}
+          {location.pathname !== "/" && (
+            <SearchEngine inNavbar setLocation={setSelectedLocation} />
+          )}
         </div>
       </nav>
       {selectedLocation && <NavigateWithData location={selectedLocation} />}
