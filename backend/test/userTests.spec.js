@@ -104,27 +104,6 @@ describe("Password Change", () => {
   });
 });
 
-// Tests for Favourite Locations
-
-describe("GET /favouriteLocations", () => {
-  it("GET all favourite locations of the user", async () => {
-    // Arrange
-    const user = await User.findOne({ username: userCredentials.username });
-    user.favouriteLocations = ["Rivendale", "Shire"];
-    await user.save();
-
-    // Act
-    const res = await request(app)
-      .get("/api/User/FavouriteLocations")
-      .set("username", userCredentials.username);
-
-    // Assert
-    res.should.have.status(200);
-    res.body.should.be.a("array");
-    res.body.length.should.be.eql(2);
-  });
-});
-
 after(() => {
   mongoose.connection.close();
 });

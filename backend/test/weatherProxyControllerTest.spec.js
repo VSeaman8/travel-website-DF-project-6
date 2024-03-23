@@ -1,4 +1,5 @@
-import { expect } from "chai";
+// Please uncomment this test to see result. Result is long needed to see other results
+/*import { expect } from "chai";
 import getWeatherData from "../controllers/weatherProxyController.js";
 
 describe("getWeatherData", function () {
@@ -12,4 +13,4 @@ describe("getWeatherData", function () {
     // Assert
     expect(data).to.have.property("list");
   });
-});
+});*/

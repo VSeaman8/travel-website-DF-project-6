@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 import getWeatherData from "./controllers/weatherProxyController.js";
+import locationRoutes from "./Routes/locationRoutes.js";
 import userRoutes from "./Routes/userRoutes.js";
 
 dotenv.config();
@@ -20,6 +21,8 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/api/User", userRoutes);
+// Favourite Locations Route
+app.use("/api/favouriteLocations", locationRoutes);
 
 // Weather Proxy Route
 app.get("/api/weather/:location", async (req, res) => {
