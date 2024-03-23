@@ -63,6 +63,31 @@ describe("GET /favouriteLocations", () => {
   });
 });
 
+describe("POST /favouriteLocations", () => {
+  it("ADD a Location to users favourite locations", async () => {
+    // Arrange
+    const user = await User.findOne({ username: userCredentials.username });
+    const oldFavouriteLocations = user.favouriteLocations;
+    const newLocation = "Mordor";
+
+    // Act
+    const res = await request(app)
+      .post("/api/favouriteLocations")
+      .set("username", userCredentials.username)
+      .send({ location: newLocation });
+
+    // Assert
+    res.should.have.status(200);
+    const updatedUser = await User.findOne({
+      username: userCredentials.username,
+    });
+    updatedUser.favouriteLocations.should.include(newLocation);
+    updatedUser.favouriteLocations.length.should.be.eql(
+      oldFavouriteLocations.length + 1
+    );
+  });
+});
+
 after(() => {
   mongoose.connection.close();
 });
