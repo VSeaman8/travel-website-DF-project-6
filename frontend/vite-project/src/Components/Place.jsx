@@ -1,4 +1,3 @@
-import LocationFavouriteBtn from "./LocationFavouriteBtn.jsx";
 import RemoveFavouriteBtn from "./RemoveFavouriteBtn.jsx";
 
 const Place = ({ location, favourite, onRemoveFavourite }) => {

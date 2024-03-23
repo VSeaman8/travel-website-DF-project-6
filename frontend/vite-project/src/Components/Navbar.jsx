@@ -1,19 +1,26 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavigateWithData from "../UtilityFunctions/NavigateWithData";
 import SearchEngine from "./searchEngine";
 
 const Navbar = ({ favourite, selectedLocation, setSelectedLocation }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleLocationClick = (chosenLocation) => {
-    setSelectedLocation(chosenLocation);
+  const handleNonLocationLinkClick = (event) => {
+    event.preventDefault();
+    setSelectedLocation(null);
+    navigate(route);
   };
 
   return (
     <div className="navbar-container">
       <nav className="navbar navbar-expand-lg ">
-        <Link className="navbar-brand" to="/">
+        <Link
+          className="navbar-brand"
+          to="/"
+          onClick={() => handleNonLocationLinkClick("/")}
+        >
           Tell Me About.....
         </Link>
         <button
@@ -28,12 +35,20 @@ const Navbar = ({ favourite, selectedLocation, setSelectedLocation }) => {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <Link className="nav-link" to="/">
+              <Link
+                className="nav-link"
+                to="/"
+                onClick={() => handleNonLocationLinkClick("/")}
+              >
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
+              <Link
+                className="nav-link"
+                to="/login"
+                onClick={() => handleNonLocationLinkClick("/login")}
+              >
                 Log In
               </Link>
             </li>
@@ -55,7 +70,7 @@ const Navbar = ({ favourite, selectedLocation, setSelectedLocation }) => {
                   {favourite.map((chosenLocation, index) => (
                     <Link
                       key={index}
-                      onClick={() => handleLocationClick(chosenLocation)}
+                      onClick={() => setSelectedLocation(chosenLocation)}
                       className="dropdown-item"
                       to={`/location/${chosenLocation}`}
                     >
@@ -63,7 +78,13 @@ const Navbar = ({ favourite, selectedLocation, setSelectedLocation }) => {
                     </Link>
                   ))}
                   <div className="dropdown-divider"></div>
-                  <Link className="dropdown-item" to="/favouritelocations">
+                  <Link
+                    className="dropdown-item"
+                    to="/favouritelocations"
+                    onClick={() =>
+                      handleNonLocationLinkClick("/favouritelocations")
+                    }
+                  >
                     All Saved Locations
                   </Link>
                 </div>
@@ -75,7 +96,6 @@ const Navbar = ({ favourite, selectedLocation, setSelectedLocation }) => {
           )}
         </div>
       </nav>
-      {selectedLocation && <NavigateWithData location={selectedLocation} />}
     </div>
   );
 };
