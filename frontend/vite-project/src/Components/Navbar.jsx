@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import NavigateWithData from "../UtilityFunctions/NavigateWithData";
 import SearchEngine from "./searchEngine";
 
 const Navbar = ({ favourite, selectedLocation, setSelectedLocation }) => {

@@ -1,7 +1,9 @@
 const RemoveFavouriteBtn = ({ location, favourite, onRemoveFavourite }) => {
-  /*const isFavourite = favourite.includes(location);
+  const isFavourite = favourite ? favourite.includes(location) : false;
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     if (isFavourite) {
       onRemoveFavourite(location);
     }
@@ -11,8 +13,9 @@ const RemoveFavouriteBtn = ({ location, favourite, onRemoveFavourite }) => {
     <button className="Removefavourite-btn" onClick={handleButtonClick}>
       Remove
     </button>
-  );*/
-  return <button className="Removefavourite-btn">Remove</button>;
+  );
+
+  //return <button className="Removefavourite-btn">Remove</button>;
 };
 
 export default RemoveFavouriteBtn;
