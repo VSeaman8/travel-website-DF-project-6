@@ -1,3 +1,8 @@
+/* Please note that the favourite Location tests are
+currently housed in this file as there is a bug issue 
+with ChaiHttp and importing request. Locationtests have
+been commented out in their own file till bug fixed!*/
+
 import * as chai from "chai";
 import { should } from "chai";
 import chaiHttp from "chai-http";
@@ -101,6 +106,78 @@ describe("Password Change", () => {
     res.body.should.have
       .property("message")
       .eql("Password changed successfully");
+  });
+});
+
+// Tests for Favourite Locations
+
+describe("GET /favouriteLocations", () => {
+  it("GET all favourite locations of the user", async () => {
+    // Arrange
+    const user = await User.findOne({ username: userCredentials.username });
+    user.favouriteLocations = ["Rivendale", "Shire"];
+    await user.save();
+
+    // Act
+    const res = await request(app)
+      .get("/api/favouriteLocations")
+      .set("username", userCredentials.username);
+
+    // Assert
+    res.should.have.status(200);
+    res.body.should.be.a("array");
+    res.body.length.should.be.eql(2);
+  });
+});
+
+describe("POST /favouriteLocations", () => {
+  it("ADD a Location to users favourite locations", async () => {
+    // Arrange
+    const user = await User.findOne({ username: userCredentials.username });
+    const oldFavouriteLocations = user.favouriteLocations;
+    const newLocation = "Mordor";
+
+    // Act
+    const res = await request(app)
+      .post("/api/favouriteLocations")
+      .set("username", userCredentials.username)
+      .send({ location: newLocation });
+
+    // Assert
+    res.should.have.status(200);
+    const updatedUser = await User.findOne({
+      username: userCredentials.username,
+    });
+    updatedUser.favouriteLocations.should.include(newLocation);
+    updatedUser.favouriteLocations.length.should.be.eql(
+      oldFavouriteLocations.length + 1
+    );
+  });
+});
+describe("DELETE /favouriteLocations", () => {
+  it("Removes a location from user's favourite list", async () => {
+    // Arrange
+    const user = await User.findOne({ username: userCredentials.username });
+    user.favouriteLocations.push("Mordor", "Rivendell", "Shire", "Greyhavens");
+    await user.save();
+    const oldFavouriteLocations = user.favouriteLocations;
+    const locationToRemove = oldFavouriteLocations[2];
+
+    // Act
+    const res = await request(app)
+      .delete("/api/favouriteLocations")
+      .set("username", userCredentials.username)
+      .send({ location: locationToRemove });
+
+    // Assert
+    res.should.have.status(200);
+    const updatedUser = await User.findOne({
+      username: userCredentials.username,
+    });
+    updatedUser.favouriteLocations.should.not.include(locationToRemove);
+    updatedUser.favouriteLocations.length.should.be.eql(
+      oldFavouriteLocations.length - 1
+    );
   });
 });
 

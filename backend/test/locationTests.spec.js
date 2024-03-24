@@ -1,3 +1,8 @@
+/* Bug issue with chai request. Only works if there is 
+1 request import between locationTest and UserTests
+Have put a copy of LocationTests in UserTests for
+sake of time. 
+
 import * as chai from "chai";
 import { should } from "chai";
 import chaiHttp from "chai-http";
@@ -116,4 +121,4 @@ describe("DELETE /favouriteLocations", () => {
 
 after(() => {
   mongoose.connection.close();
-});
+});*/
