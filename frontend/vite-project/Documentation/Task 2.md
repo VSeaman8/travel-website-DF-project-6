@@ -1,5 +1,10 @@
 # Challenge Documentation
 
+## State of Play
+
+Frontend: Local storage of Favourite location complete
+Front to Backend: connection of Favourite location in progress
+
 ## <a id="table-of-contents"></a>Table of Contents
 
 1. [Component Hierarchy](#component-hierarchy)

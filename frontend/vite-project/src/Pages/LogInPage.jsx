@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { loginUser } from "../UtilityFunctions/InternalApiCall.js";
 
-const LoginPage = ({ onLogin }) => {
+const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    /*// Refactored Code for login
     const user = {
       username: username,
       password: password,
@@ -16,10 +18,10 @@ const LoginPage = ({ onLogin }) => {
       `Logging in with username: ${username} and password: ${password}`
     );
     onLogin(user);
-  };
+  };*/
 
-  // Code for login before refactoring
-  /*const user = {
+    // Code for login before refactoring
+    const user = {
       username: username,
       password: password,
     };
@@ -34,8 +36,7 @@ const LoginPage = ({ onLogin }) => {
     } catch (error) {
       console.error("Error:", error);
     }
-  };*/
-
+  };
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
@@ -66,13 +67,3 @@ const LoginPage = ({ onLogin }) => {
 };
 
 export default LoginPage;
-
-//old code for reference
-/*  try {
-      const data = await loginUser(user);
-      console.log(data);
-      console.log("User Logged in successfully");
-      setUser(loggedInUser);
-    } catch (error) {
-      console.error("Error:", error);
-    }*/
