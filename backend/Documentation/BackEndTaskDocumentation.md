@@ -15,38 +15,38 @@
 
 ## User Stories
 
-[Kanban of user stories](./UserStoriesCh6.png)
+![Kanban of user stories](./UserStoriesCh6.png)
 
 ## Basic Backend Structure
 
-[Basic Backend Structure](./BackendStructure.png)
+![Basic Backend Structure](./BackendStructure.png)
 
 ## Routing Diagrams
 
 ### Registration
 
-[Registration Routing Diagram](./backendRegister.png)
+![Registration Routing Diagram](./backendRegister.png)
 
 ### Login In
 
-[Log In Routing Diagram](./backendlogin.png)
+![Log In Routing Diagram](./backendlogin.png)
 
 ### Change Password
 
-[Change Password Routing Diagram](./backendChangePassword.png)
+![Change Password Routing Diagram](./backendChangePassword.png)
 
 ### Get Locations
 
-[Get Locations Routing Diagram](./GetLocations.png)
+![Get Locations Routing Diagram](./GetLocations.png)
 
 ### Add Locations
 
-[Add Locations Routing Diagram](./AddLocations.png)
+![Add Locations Routing Diagram](./AddLocations.png)
 
 ### Remove Locations
 
-[Remove Locations Routing Diagram](./DeleteLocations.png)
+![Remove Locations Routing Diagram](./DeleteLocations.png)
 
 ### Proxy Routing
 
-[Basic Backend Structure](./ProxyRouting.png)
+![Basic Backend Structure](./ProxyRouting.png)
