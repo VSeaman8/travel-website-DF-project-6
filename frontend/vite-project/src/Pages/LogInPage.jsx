@@ -18,6 +18,24 @@ const LoginPage = ({ onLogin }) => {
     onLogin(user);
   };
 
+  // Code for login before refactoring
+  /*const user = {
+      username: username,
+      password: password,
+    };
+    console.log(
+      `Logging in with username: ${username} and password: ${password}`
+    );
+
+    try {
+      const data = await loginUser(user);
+      console.log(data);
+      console.log("User Logged in successfully");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };*/
+
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">

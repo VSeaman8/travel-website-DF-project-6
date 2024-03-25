@@ -19,6 +19,8 @@ import "./App.css";
 const App = () => {
   const [location, setLocation] = useState("");
   const [favourite, setFavourite] = useState([]);
+
+  /* Refactored code for connecting front to backend for favourite location
   const [user, setUser] = useState(null);
 
   const handleLogin = async (userDetails) => {
@@ -30,7 +32,7 @@ const App = () => {
       setFavourite(favouriteLocations);
     } catch (error) {
       console.error("Login failed:", error);
-      // handle error...
+      alert("Login failed. Please check your username and password.");
     }
   };
 
@@ -44,6 +46,23 @@ const App = () => {
     await removeFavouriteLocation(user.id, location);
     const updatedFavourites = await getFavouriteLocations(user.id);
     setFavourite(updatedFavourites);
+  };*/
+  // code before refactoring for backend to favourite Locations
+
+  const handleAddFavourite = (location) => {
+    addLocation(location);
+    const updatedFavourites = getLocations();
+    setFavourite(updatedFavourites);
+    console.log("Added to favourites:", location);
+    console.log("Updated favourites:", updatedFavourites);
+  };
+
+  const handleRemoveFavourite = (location) => {
+    removeLocation(location);
+    const updatedFavourites = getLocations();
+    setFavourite(updatedFavourites);
+    console.log("Removed from favourites:", location);
+    console.log("Updated favourites:", updatedFavourites);
   };
 
   return (
