@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { loginUser } from "../UtilityFunctions/InternalApiCall";
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,14 +15,7 @@ const LoginPage = () => {
     console.log(
       `Logging in with username: ${username} and password: ${password}`
     );
-
-    try {
-      const data = await loginUser(user);
-      console.log(data);
-      console.log("User Logged in successfully");
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    onLogin(user);
   };
 
   return (
@@ -56,3 +48,13 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+//old code for reference
+/*  try {
+      const data = await loginUser(user);
+      console.log(data);
+      console.log("User Logged in successfully");
+      setUser(loggedInUser);
+    } catch (error) {
+      console.error("Error:", error);
+    }*/

@@ -13,3 +13,9 @@
   flex-direction: column;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .home-container {
+    font-size: 14px;
+  }
+}
