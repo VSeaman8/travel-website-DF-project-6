@@ -20,7 +20,7 @@ mongoose
   .then(() => console.log("Database connected!"))
   .catch((err) => console.log(err));
 
-app.use("/api/User", userRoutes);
+app.use("/api/user", userRoutes);
 // Favourite Locations Route
 app.use("/api/favouriteLocations", locationRoutes);
 

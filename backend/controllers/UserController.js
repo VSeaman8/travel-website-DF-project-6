@@ -24,6 +24,7 @@ export const registerUser = async (req, res) => {
     res.status(201).json({ user: user._id });
   } catch (err) {
     res.status(400).json({ message: err.message });
+    console.log("The error is here");
   }
 };
 
