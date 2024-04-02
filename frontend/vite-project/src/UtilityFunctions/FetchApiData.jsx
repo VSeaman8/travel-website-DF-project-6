@@ -1,5 +1,5 @@
 // Connection to API with Proxy - weather
-/*import axios from "axios";
+import axios from "axios";
 
 const FetchApiData = async (location) => {
   if (!location) {
@@ -8,8 +8,7 @@ const FetchApiData = async (location) => {
   }
   try {
     const response = await axios.get(
-      `http://localhost:5000/api/weather/${location}`
-      //`http://localhost:${process.env.PORT}/api/weather/${location}`
+      `http://localhost:4003/api/weather/${location}`
     );
     console.log(response.data);
     return response.data;
@@ -17,9 +16,10 @@ const FetchApiData = async (location) => {
     console.error(`There was a problem with the fetch operation`, error);
     return {};
   }
-};*/
+};
 
 // Connection to Dummy data
+
 /*import dummyWeatherData from "../assets/Data/dummyWeatherData.json";
 const FetchApiData = async (location) => {
   console.log(`Fetching dummy weather for ${location}`);
@@ -27,8 +27,8 @@ const FetchApiData = async (location) => {
   return dummyWeatherData;
 };*/
 
-// connection to api without proxy - weather
-import axios from "axios";
+// connection to api without proxy - weather (kept for short term)
+/*import axios from "axios";
 
 const FetchApiData = async (location) => {
   if (!location) {
@@ -45,6 +45,6 @@ const FetchApiData = async (location) => {
     console.error(`There was a problem with the fetch operation`, error);
     return {};
   }
-};
+};*/
 
 export default FetchApiData;
