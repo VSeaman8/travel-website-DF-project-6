@@ -2,41 +2,21 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { loginUser } from "../UtilityFunctions/InternalApiCall.js";
 
-const LoginPage = () => {
+const LoginPage = ({ handleLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    /*// Refactored Code for login
+    // Refactored Code for login
     const user = {
       username: username,
       password: password,
     };
-    console.log(
-      `Logging in with username: ${username} and password: ${password}`
-    );
-    onLogin(user);
-  };*/
-
-    // Code for login before refactoring
-    const user = {
-      username: username,
-      password: password,
-    };
-    console.log(
-      `Logging in with username: ${username} and password: ${password}`
-    );
-
-    try {
-      const data = await loginUser(user);
-      console.log(data);
-      console.log("User Logged in successfully");
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    handleLogin(user);
   };
+
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
@@ -67,3 +47,21 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+/*// Code for login before refactoring
+    const user = {
+      username: username,
+      password: password,
+    };
+    console.log(
+      `Logging in with username: ${username} and password: ${password}`
+    );
+
+    try {
+      const data = await loginUser(user);
+      console.log(data);
+      console.log("User Logged in successfully");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };*/

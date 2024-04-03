@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-/*import {
+import {
   getFavouriteLocations,
   addFavouriteLocation,
   removeFavouriteLocation,
-} from "./UtilityFunctions/IntApiCallFavourite.js";*/
-import {
+} from "./UtilityFunctions/IntApiCallFavourite.js";
+/*import {
   getLocations,
   addLocation,
   removeLocation,
-} from "./UtilityFunctions/FavouriteLocationsArrayUtility.js";
+} from "./UtilityFunctions/FavouriteLocationsArrayUtility.js";*/
 import FavouriteLocationsPage from "./Pages/FavouriteLocationsPage.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import LocationPage from "./Pages/LocationPage.jsx";
@@ -18,41 +18,23 @@ import Layout from "./Components/Layout.jsx";
 import NavigateWithData from "./UtilityFunctions/NavigateWithData.js";
 import RegistrationPage from "./Pages/RegistrationPage.jsx";
 
+import { loginUser } from "./UtilityFunctions/InternalApiCall.js";
+
 import "./App.css";
 
 const App = () => {
+  const [favourite, setFavourite] = useState([]);
   const [location, setLocation] = useState("");
-  //const [favourite, setFavourite] = useState([]);
-
-  // Connection to local Storage for using favourite locations
-
-  const [favourite, setFavourite] = useState(getLocations());
-
-  const handleAddFavourite = (location) => {
-    addLocation(location);
-    const updatedFavourites = getLocations();
-    setFavourite(updatedFavourites);
-    console.log("Added to favourites:", location);
-    console.log("Updated favourites:", updatedFavourites);
-  };
-
-  const handleRemoveFavourite = (location) => {
-    removeLocation(location);
-    const updatedFavourites = getLocations();
-    setFavourite(updatedFavourites);
-    console.log("Removed from favourites:", location);
-    console.log("Updated favourites:", updatedFavourites);
-  };
 
   // Refactored code for connecting front to backend for favourite location
-  /*const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   const handleLogin = async (userDetails) => {
     try {
       const loggedInUser = await loginUser(userDetails);
-      console.log(`Logged in as: ${loggedInUser.username}`);
-      setUser(loggedInUser);
-      const favouriteLocations = await getFavouriteLocations(loggedInUser.id);
+      console.log(`Logged in as: ${loggedInUser._id}`);
+      setUser(loggedInUser._id);
+      const favouriteLocations = await getFavouriteLocations(loggedInUser._id);
       setFavourite(favouriteLocations);
     } catch (error) {
       console.error("Login failed:", error);
@@ -61,16 +43,16 @@ const App = () => {
   };
 
   const handleAddFavourite = async (location) => {
-    await addFavouriteLocation(user.id, location);
-    const updatedFavourites = await getFavouriteLocations(user.id);
+    await addFavouriteLocation(user, location);
+    const updatedFavourites = await getFavouriteLocations(user);
     setFavourite(updatedFavourites);
   };
 
   const handleRemoveFavourite = async (location) => {
-    await removeFavouriteLocation(user.id, location);
-    const updatedFavourites = await getFavouriteLocations(user.id);
+    await removeFavouriteLocation(user, location);
+    const updatedFavourites = await getFavouriteLocations(user);
     setFavourite(updatedFavourites);
-  };*/
+  };
 
   return (
     <div>
@@ -85,7 +67,10 @@ const App = () => {
             path="/"
             element={<HomePage location={location} setLocation={setLocation} />}
           />
-          <Route path="/login" element={<LogInPage />} />
+          <Route
+            path="/login"
+            element={<LogInPage handleLogin={handleLogin} />}
+          />
           <Route path="/register" element={<RegistrationPage />} />
           <Route
             path="/location/:location"
@@ -116,3 +101,23 @@ const App = () => {
 };
 
 export default App;
+
+// Connection to local Storage for using favourite locations
+
+/*const [favourite, setFavourite] = useState(getLocations());
+
+  const handleAddFavourite = (location) => {
+    addLocation(location);
+    const updatedFavourites = getLocations();
+    setFavourite(updatedFavourites);
+    console.log("Added to favourites:", location);
+    console.log("Updated favourites:", updatedFavourites);
+  };
+
+  const handleRemoveFavourite = (location) => {
+    removeLocation(location);
+    const updatedFavourites = getLocations();
+    setFavourite(updatedFavourites);
+    console.log("Removed from favourites:", location);
+    console.log("Updated favourites:", updatedFavourites);
+  };*/

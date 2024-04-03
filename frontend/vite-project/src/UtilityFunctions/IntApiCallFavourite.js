@@ -1,7 +1,7 @@
 // connect to back end for all locations
 export const getFavouriteLocations = async (userId) => {
   const response = await fetch(
-    `http://localhost:5000/api/User/${userId}/favourites`
+    `http://localhost:4003/api/user/${userId}/favourites`
   );
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -11,7 +11,7 @@ export const getFavouriteLocations = async (userId) => {
 // connect to backend for adding to locations
 export const addFavouriteLocation = async (userId, location) => {
   const response = await fetch(
-    `http://localhost:5000/api/User/${userId}/favourites`,
+    `http://localhost:4003/api/user/${userId}/favourites`,
     {
       method: "POST",
       headers: {
@@ -29,7 +29,7 @@ export const addFavouriteLocation = async (userId, location) => {
 // connect to backend for removing a location
 export const removeFavouriteLocation = async (userId, location) => {
   const response = await fetch(
-    `http://localhost:5000/api/User/${userId}/favourites`,
+    `http://localhost:4003/api/user/${userId}/favourites`,
     {
       method: "DELETE",
       headers: {
