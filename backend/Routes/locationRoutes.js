@@ -4,18 +4,22 @@ import {
   addFavouriteLocation,
   deleteFavouriteLocation,
 } from "../controllers/locationController.js";
-import authenticate from "../Middlewares/authMiddleware.js";
+import authenticate from "../middlewares/authMiddleware.js";
 
 // Create a new Router
 const router = express.Router();
 
 // Get Route for favourite Location
-router.get("/", authenticate, getFavouriteLocations);
+router.get("/user/:userId/favourites", authenticate, getFavouriteLocations);
 
 // ADD Route for favourite Location
-router.post("/", authenticate, addFavouriteLocation);
+router.post("/user/:userId/favourites", authenticate, addFavouriteLocation);
 
 // REMOVE Route for Location favourite
-router.delete("/", authenticate, deleteFavouriteLocation);
+router.delete(
+  "/user/:userId/favourites",
+  authenticate,
+  deleteFavouriteLocation
+);
 
 export default router;

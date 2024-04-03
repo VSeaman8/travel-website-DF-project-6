@@ -1,8 +1,8 @@
-import User from "../Models/User.js";
+import User from "../models/User.js";
 
 export const getFavouriteLocations = async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.headers.username });
+    const user = await User.findById(req.params.userId);
     if (!user) {
       throw new Error("User not found");
     }
@@ -14,7 +14,7 @@ export const getFavouriteLocations = async (req, res, next) => {
 
 export const addFavouriteLocation = async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.headers.username });
+    const user = await User.findById(req.params.userId);
     if (!user) {
       throw new Error("User not found");
     }
@@ -28,7 +28,7 @@ export const addFavouriteLocation = async (req, res, next) => {
 
 export const deleteFavouriteLocation = async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.headers.username });
+    const user = await User.findById(req.params.userId);
     if (!user) {
       throw new Error("User not found");
     }

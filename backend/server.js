@@ -4,8 +4,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 
 import getWeatherData from "./controllers/weatherProxyController.js";
-import locationRoutes from "./Routes/locationRoutes.js";
-import userRoutes from "./Routes/userRoutes.js";
+import locationRoutes from "./routes/locationRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
