@@ -1,15 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import {
-  getFavouriteLocations,
-  addFavouriteLocation,
-  removeFavouriteLocation,
-} from "./UtilityFunctions/IntApiCallFavourite.js";
-/*import {
-  getLocations,
-  addLocation,
-  removeLocation,
-} from "./UtilityFunctions/FavouriteLocationsArrayUtility.js";*/
+
 import FavouriteLocationsPage from "./Pages/FavouriteLocationsPage.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import LocationPage from "./Pages/LocationPage.jsx";
@@ -19,6 +10,11 @@ import NavigateWithData from "./UtilityFunctions/NavigateWithData.js";
 import RegistrationPage from "./Pages/RegistrationPage.jsx";
 
 import { loginUser } from "./UtilityFunctions/InternalApiCall.js";
+import {
+  getFavouriteLocations,
+  addFavouriteLocation,
+  removeFavouriteLocation,
+} from "./UtilityFunctions/IntApiCallFavourite.js";
 
 import "./App.css";
 
@@ -32,9 +28,11 @@ const App = () => {
   const handleLogin = async (userDetails) => {
     try {
       const loggedInUser = await loginUser(userDetails);
-      console.log(`Logged in as: ${loggedInUser._id}`);
-      setUser(loggedInUser._id);
-      const favouriteLocations = await getFavouriteLocations(loggedInUser._id);
+      console.log("loggedInUser:", loggedInUser);
+      console.log("loggedInUser._id:", loggedInUser.user);
+      console.log(`Logged in as: ${loggedInUser.user}`);
+      setUser(loggedInUser.user);
+      const favouriteLocations = await getFavouriteLocations(loggedInUser.user);
       setFavourite(favouriteLocations);
     } catch (error) {
       console.error("Login failed:", error);
@@ -102,8 +100,12 @@ const App = () => {
 
 export default App;
 
-// Connection to local Storage for using favourite locations
-
+// Connection to local Storage for using favourite locations - keep for moment
+/*import {
+  getLocations,
+  addLocation,
+  removeLocation,
+} from "./UtilityFunctions/FavouriteLocationsArrayUtility.js";*/
 /*const [favourite, setFavourite] = useState(getLocations());
 
   const handleAddFavourite = (location) => {

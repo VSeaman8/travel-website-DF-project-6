@@ -1,8 +1,9 @@
 // connect to back end for all locations
 export const getFavouriteLocations = async (userId) => {
-  const response = await fetch(
-    `http://localhost:4003/api/user/${userId}/favourites`
-  );
+  console.log("getFavouriteLocations userId:", userId);
+  const url = `http://localhost:4003/api/user/${userId}/favourites`;
+  console.log("url:", url);
+  const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
   }
