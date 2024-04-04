@@ -20,9 +20,10 @@ mongoose
   .then(() => console.log("Database connected!"))
   .catch((err) => console.log(err));
 
-app.use("/api/user", userRoutes);
 // Favourite Locations Route
-app.use("/api/favouriteLocations", locationRoutes);
+app.use("/api/user", locationRoutes);
+// User Route
+app.use("/api/user", userRoutes);
 
 // Weather Proxy Route
 app.get("/api/weather/:location", async (req, res) => {
@@ -30,6 +31,7 @@ app.get("/api/weather/:location", async (req, res) => {
   res.json(data);
 });
 
+// Server Connected
 const server = app.listen(process.env.PORT, () =>
   console.log(
     `Server is running on: ${server.address().address}:${server.address().port}`
