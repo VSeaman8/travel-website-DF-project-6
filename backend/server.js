@@ -7,7 +7,11 @@ import getWeatherData from "./controllers/weatherProxyController.js";
 import locationRoutes from "./routes/locationRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
-dotenv.config();
+if (process.env.NODE_ENV === "test") {
+  dotenv.config({ path: ".env.test" });
+} else {
+  dotenv.config();
+}
 
 const app = express();
 

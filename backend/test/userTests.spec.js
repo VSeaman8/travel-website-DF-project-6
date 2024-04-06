@@ -9,7 +9,7 @@ import chaiHttp from "chai-http";
 import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 
-import User from "../Models/User.js";
+import User from "../models/User.js";
 import app from "../server.js";
 
 const { request } = chai.use(chaiHttp);
