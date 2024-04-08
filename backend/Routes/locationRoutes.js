@@ -7,19 +7,15 @@ import {
 import authenticate from "../middlewares/authMiddleware.js";
 
 // Create a new Router
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 // Get Route for favourite Location
-router.get("/user/:userId/favourites", authenticate, getFavouriteLocations);
+router.get("/", authenticate, getFavouriteLocations);
 
 // ADD Route for favourite Location
-router.post("/user/:userId/favourites", authenticate, addFavouriteLocation);
+router.post("/", authenticate, addFavouriteLocation);
 
 // REMOVE Route for Location favourite
-router.delete(
-  "/user/:userId/favourites",
-  authenticate,
-  deleteFavouriteLocation
-);
+router.delete("/", authenticate, deleteFavouriteLocation);
 
 export default router;

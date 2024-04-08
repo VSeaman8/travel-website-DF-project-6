@@ -25,7 +25,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // Favourite Locations Route
-app.use("/api/user", locationRoutes);
+app.use("/api/:userId/locations", locationRoutes);
 // User Route
 app.use("/api/user", userRoutes);
 

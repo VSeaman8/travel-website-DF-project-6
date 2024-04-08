@@ -41,7 +41,9 @@ beforeEach(async () => {
       lastName: userCredentials.lastName,
     });
 
-    await user.save();
+    const savedUser = await user.save();
+    userCredentials.userId = savedUser._id;
+    console.log("Saved user ID:", userCredentials.userId);
   } catch (error) {
     console.error(error);
   }
@@ -114,14 +116,15 @@ describe("Password Change", () => {
 describe("GET /favouriteLocations", () => {
   it("GET all favourite locations of the user", async () => {
     // Arrange
-    const user = await User.findOne({ username: userCredentials.username });
+    const user = await User.findById(userCredentials.userId);
     user.favouriteLocations = ["Rivendale", "Shire"];
     await user.save();
 
     // Act
     const res = await request(app)
-      .get("/api/favouriteLocations")
-      .set("username", userCredentials.username);
+      .get(`/api/${userCredentials.userId}/locations`)
+      .set("userId", userCredentials.userId);
+    console.log("Response status code:", res.status);
 
     // Assert
     res.should.have.status(200);
@@ -133,21 +136,20 @@ describe("GET /favouriteLocations", () => {
 describe("POST /favouriteLocations", () => {
   it("ADD a Location to users favourite locations", async () => {
     // Arrange
-    const user = await User.findOne({ username: userCredentials.username });
+    const user = await User.findById(userCredentials.userId);
     const oldFavouriteLocations = user.favouriteLocations;
     const newLocation = "Mordor";
 
     // Act
     const res = await request(app)
-      .post("/api/favouriteLocations")
-      .set("username", userCredentials.username)
+      .post(`/api/${userCredentials.userId}/locations`)
+      .set("userId", userCredentials.userId)
       .send({ location: newLocation });
+    console.log("Response status code:", res.status);
 
     // Assert
     res.should.have.status(200);
-    const updatedUser = await User.findOne({
-      username: userCredentials.username,
-    });
+    const updatedUser = await User.findById(userCredentials.userId);
     updatedUser.favouriteLocations.should.include(newLocation);
     updatedUser.favouriteLocations.length.should.be.eql(
       oldFavouriteLocations.length + 1
@@ -157,7 +159,7 @@ describe("POST /favouriteLocations", () => {
 describe("DELETE /favouriteLocations", () => {
   it("Removes a location from user's favourite list", async () => {
     // Arrange
-    const user = await User.findOne({ username: userCredentials.username });
+    const user = await User.findById(userCredentials.userId);
     user.favouriteLocations.push("Mordor", "Rivendell", "Shire", "Greyhavens");
     await user.save();
     const oldFavouriteLocations = user.favouriteLocations;
@@ -165,15 +167,14 @@ describe("DELETE /favouriteLocations", () => {
 
     // Act
     const res = await request(app)
-      .delete("/api/favouriteLocations")
-      .set("username", userCredentials.username)
+      .delete(`/api/${userCredentials.userId}/locations`)
+      .set("userId", userCredentials.userId)
       .send({ location: locationToRemove });
+    console.log("Response status code:", res.status);
 
     // Assert
     res.should.have.status(200);
-    const updatedUser = await User.findOne({
-      username: userCredentials.username,
-    });
+    const updatedUser = await User.findById(userCredentials.userId);
     updatedUser.favouriteLocations.should.not.include(locationToRemove);
     updatedUser.favouriteLocations.length.should.be.eql(
       oldFavouriteLocations.length - 1
