@@ -1,7 +1,7 @@
 import { formatDate, kelvinToCelsius } from "./WeatherFormatingFunction";
 
 const processWeatherData = (result) => {
-  if (!result.list || result.list.length === 0) {
+  if (!result || !result.list || result.list.length === 0) {
     console.error("No weather data available");
     return;
   }
@@ -24,7 +24,9 @@ const processWeatherData = (result) => {
     };
   });
 
-  return { currentDayData, forecastData };
+  const { lat, lon } = result.city.coord;
+
+  return { currentDayData, forecastData, lat, lon };
 };
 
 const getDayIndices = (result) => {

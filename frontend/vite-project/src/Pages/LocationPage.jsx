@@ -1,7 +1,8 @@
 import { useLocation, useParams } from "react-router-dom";
 
 import WeatherContainer from "../containers/weatherContainer.jsx";
-import LocationFavouriteBtn from "../Components/LocationFavouriteBtn.jsx";
+import LocationFavouriteBtn from "../components/LocationFavouriteBtn.jsx";
+import MapContainer from "../containers/MapContainer.jsx";
 
 import "./LocationPage.css";
 
@@ -17,6 +18,8 @@ const LocationPage = ({ favourite, onAddFavourite, onRemoveFavourite }) => {
     );
   }
 
+  const { lat, lon } = weatherData;
+
   return (
     <div className="locationPage-container weather-container weather-page">
       <h2>Telling you about ...</h2>
@@ -29,7 +32,10 @@ const LocationPage = ({ favourite, onAddFavourite, onRemoveFavourite }) => {
         onAddFavourite={onAddFavourite}
         onRemoveFavourite={onRemoveFavourite}
       />
-      <WeatherContainer weatherData={weatherData} />
+      <div className="ContainerLayout">
+        <WeatherContainer weatherData={weatherData} />
+        <MapContainer lat={lat} lon={lon} />
+      </div>
     </div>
   );
 };

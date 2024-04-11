@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { registerUser } from "../UtilityFunctions/InternalApiCall.js";
+import { registerUser } from "../utilityFunctions/InternalApiCall.js";
 
 const RegistrationPage = () => {
   const [username, setUsername] = useState("");

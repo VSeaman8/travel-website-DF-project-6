@@ -1,5 +1,5 @@
-import WeatherCurrentDay from "../Components/WeatherCurrentDay";
-import WeatherForecast from "../Components/WeatherForecast";
+import WeatherCurrentDay from "../components/WeatherCurrentDay";
+import WeatherForecast from "../components/WeatherForecast";
 
 const WeatherContainer = ({ weatherData }) => {
   if (!weatherData) {
@@ -8,7 +8,7 @@ const WeatherContainer = ({ weatherData }) => {
 
   const { currentDayData, forecastData } = weatherData;
   return (
-    <div>
+    <div className="weathercontainer">
       <WeatherCurrentDay currentDayData={currentDayData} />
       <WeatherForecast forecastData={forecastData} />
     </div>

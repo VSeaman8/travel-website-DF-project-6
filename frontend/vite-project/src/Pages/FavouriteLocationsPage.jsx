@@ -1,4 +1,4 @@
-import FavouriteLocationsPlaces from "../Components/FavouriteLocationsPlaces.jsx";
+import FavouriteLocationsPlaces from "../components/FavouriteLocationsPlaces.jsx";
 import "./FavouriteLocationsPage.css";
 
 const FavouriteLocationsPage = ({

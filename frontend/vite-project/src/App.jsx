@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import FavouriteLocationsPage from "./Pages/FavouriteLocationsPage.jsx";
-import HomePage from "./Pages/HomePage.jsx";
-import LocationPage from "./Pages/LocationPage.jsx";
-import LogInPage from "./Pages/LogInPage.jsx";
-import Layout from "./Components/Layout.jsx";
-import NavigateWithData from "./UtilityFunctions/NavigateWithData.js";
-import RegistrationPage from "./Pages/RegistrationPage.jsx";
+import FavouriteLocationsPage from "./pages/FavouriteLocationsPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import LocationPage from "./pages/LocationPage.jsx";
+import LogInPage from "./pages/LogInPage.jsx";
+import Layout from "./components/Layout.jsx";
+import NavigateWithData from "./utilityFunctions/NavigateWithData.js";
+import RegistrationPage from "./pages/RegistrationPage.jsx";
 
-import { loginUser } from "./UtilityFunctions/InternalApiCall.js";
+import { loginUser } from "./utilityFunctions/InternalApiCall.js";
 import {
   getFavouriteLocations,
   addFavouriteLocation,
   removeFavouriteLocation,
-} from "./UtilityFunctions/IntApiCallFavourite.js";
+} from "./utilityFunctions/IntApiCallFavourite.js";
 
 import "./App.css";
 

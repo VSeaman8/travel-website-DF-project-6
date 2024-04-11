@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { loginUser } from "../UtilityFunctions/InternalApiCall.js";
+import { loginUser } from "../utilityFunctions/InternalApiCall.js";
 
 const LoginPage = ({ handleLogin }) => {
   const [username, setUsername] = useState("");
