@@ -29,9 +29,9 @@ const App = () => {
   const handleLogin = async (userDetails) => {
     try {
       const loggedInUser = await loginUser(userDetails);
-      console.log("loggedInUser:", loggedInUser);
-      console.log("loggedInUser._id:", loggedInUser.user);
-      console.log(`Logged in as: ${loggedInUser.user}`);
+      //console.log("loggedInUser:", loggedInUser);
+      //console.log("loggedInUser._id:", loggedInUser.user);
+      //console.log(`Logged in as: ${loggedInUser.user}`);
       setUser(loggedInUser.user);
       const favouriteLocations = await getFavouriteLocations(loggedInUser.user);
       setFavourite(favouriteLocations);
