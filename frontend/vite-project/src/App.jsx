@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import FavouriteLocationsPage from "./pages/FavouriteLocationsPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -21,6 +21,7 @@ import "./App.css";
 const App = () => {
   const [favourite, setFavourite] = useState([]);
   const [location, setLocation] = useState("");
+  const navigate = useNavigate();
 
   // Refactored code for connecting front to backend for favourite location
   const [user, setUser] = useState(null);
@@ -34,10 +35,15 @@ const App = () => {
       setUser(loggedInUser.user);
       const favouriteLocations = await getFavouriteLocations(loggedInUser.user);
       setFavourite(favouriteLocations);
+      navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
       alert("Login failed. Please check your username and password.");
     }
+  };
+
+  const handleLogout = () => {
+    setUser(null);
   };
 
   const handleAddFavourite = async (location) => {
@@ -58,6 +64,8 @@ const App = () => {
         favourite={favourite}
         selectedLocation={location}
         setSelectedLocation={setLocation}
+        user={user}
+        handleLogout={handleLogout}
       >
         <Routes>
           <Route

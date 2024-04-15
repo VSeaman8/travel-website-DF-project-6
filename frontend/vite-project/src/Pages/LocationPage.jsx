@@ -1,3 +1,4 @@
+// Please note that HotelContainer is not added as API is no longer available
 import { useLocation, useParams } from "react-router-dom";
 
 import WeatherContainer from "../containers/weatherContainer.jsx";
@@ -21,7 +22,7 @@ const LocationPage = ({ favourite, onAddFavourite, onRemoveFavourite }) => {
   const { lat, lon } = weatherData;
 
   return (
-    <div className="locationPage-container weather-container weather-page">
+    <div className="locationPage-container">
       <h2>Telling you about ...</h2>
       <h1 className="location-title weather-title">
         {location.charAt(0).toUpperCase() + location.slice(1)}
@@ -32,7 +33,7 @@ const LocationPage = ({ favourite, onAddFavourite, onRemoveFavourite }) => {
         onAddFavourite={onAddFavourite}
         onRemoveFavourite={onRemoveFavourite}
       />
-      <div className="ContainerLayout">
+      <div className="containerLayout">
         <WeatherContainer weatherData={weatherData} />
         <MapContainer lat={lat} lon={lon} />
       </div>

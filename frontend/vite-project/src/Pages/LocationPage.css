@@ -1,3 +1,11 @@
+.containerLayout {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
 .current-weather {
   display: flex;
   flex-direction: column;
@@ -67,6 +75,18 @@
     inset -5px -5px 10px #444;
   color: #d6d6d6;
   transition: 500ms;
+}
+
+/* Map Container CSS */
+.mapContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Weather Container CSS */
+.weatherContainer h1 {
+  font-size: 24px;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
