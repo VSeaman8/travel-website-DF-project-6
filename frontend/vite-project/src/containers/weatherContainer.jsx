@@ -8,7 +8,7 @@ const WeatherContainer = ({ weatherData }) => {
 
   const { currentDayData, forecastData } = weatherData;
   return (
-    <div className="weathercontainer">
+    <div className="weatherContainer">
       <WeatherCurrentDay currentDayData={currentDayData} />
       <WeatherForecast forecastData={forecastData} />
     </div>
