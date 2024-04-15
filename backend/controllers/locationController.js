@@ -4,7 +4,6 @@ export const getFavouriteLocations = async (req, res, next) => {
   try {
     console.log("userId from getFavouriteLocations:", req.params.userId);
     const user = await User.findById(req.params.userId);
-    console.log("user:", user);
     if (!user) {
       throw new Error("User not found");
     }

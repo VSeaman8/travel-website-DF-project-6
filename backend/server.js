@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import getHotelData from "./controllers/hotelProxyController.js";
 import getMapData from "./controllers/mapProxyController.js";
 import getWeatherData from "./controllers/weatherProxyController.js";
 import locationRoutes from "./routes/locationRoutes.js";
@@ -39,6 +40,12 @@ app.get("/api/weather/:location", async (req, res) => {
 // Map Proxy Route
 app.get("/api/map/:lat/:lon", async (req, res) => {
   const data = await getMapData(req.params.lat, req.params.lon);
+  res.json(data);
+});
+
+// Hotel Proxy Route
+app.get("/api/hotels/:city", async (req, res) => {
+  const data = await getHotelData(req.params.city);
   res.json(data);
 });
 
